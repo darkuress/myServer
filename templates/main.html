@@ -1,4 +1,40 @@
 <!DOCTYPE html>
+<style type="text/css">
+    body {
+    background-color: #CCC;
+    font-size: 16px;
+    font-family: Verdana, Sans-Serif;
+    }
+    h1 {
+            color: #ffffff;
+            background-color: #B9C1EA;
+            text-transform: uppercase;
+    }
+    h2 {
+            color: #7350c6;
+            font-size: 20px;
+    }
+    h3 {
+            color: #f4422d;
+            font-size: 18px;
+    }
+    th {
+            text-align : left;
+            font-weight: bold;
+    }
+    tr:hover {
+            background: #B9C1EA;
+    }
+    td {
+            color: #3E3B8E;
+    }
+    #submit {
+            width:10%;
+            height:50px;
+            text-transform: uppercase;"
+    }
+</style>
+
 <head>
    <title>Current Status</title>
 </head>
@@ -9,11 +45,14 @@
    {% for pin in pins %}
    <p>The {{ pins[pin].name }}
    {% if pins[pin].state == true %}
-      is currently on (<a href="/{{pin}}/off">turn off</a>)
+      is currently on
+      <button id="submit" class="ui-button ui-button-text-only" type="submit" onclick=<a href="/{{pin}}/off">Off</button>
    {% else %}
-      is currently off (<a href="/{{pin}}/on">turn on</a>)
+      is currently off
+      <button id="submit" class="ui-button ui-button-text-only" type="submit" onclick=<a href="/{{pin}}/off">On</button>
    {% endif %}
    </p>
+   
    {% endfor %}
 
    {% if message %}
