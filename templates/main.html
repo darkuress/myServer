@@ -46,10 +46,10 @@
    <p>The {{ pins[pin].name }}
    {% if pins[pin].state == true %}
       is currently on
-      <button onclick=<a href="/{{pin}}/off">Off</button>
+      <button onclick="/{{pin}}/off">Off</button>
    {% else %}
       is currently off
-      <button onclick=<a href="/{{pin}}/on">On</button>
+      <button onclick="/{{pin}}/on">On</button>
    {% endif %}
    </p>
    
