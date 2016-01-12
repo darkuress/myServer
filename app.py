@@ -18,7 +18,10 @@ for pin in pins:
 def main():
     #humidity and temperature data
     dhtPin = 4
-    humidity, temperature = Adafruit_DHT.read_retry(11, 4)
+    dhtResult = Adafruit_DHT.read_retry(11, 4)
+    print dhtResult
+    humidity = dhtResult[0]
+    temperature = dhtResult[1]
 
     # For each pin, read the pin state and store it in the pins dictionary:
     for pin in pins:
