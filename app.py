@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import Adafruit_DHT
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
@@ -15,12 +16,19 @@ for pin in pins:
 
 @app.route("/")
 def main():
+    #humidity and temperature data
+    dhtPin = 4
+    humidity, temperature = Adafruit_DHT.read_retry(11, 4)
+
     # For each pin, read the pin state and store it in the pins dictionary:
     for pin in pins:
         pins[pin]['state'] = GPIO.input(pin)
     
     # Put the pin dictionary into the template data dictionary:
-    templateData = {'pins' : pins}
+    templateData = {'pins' : pins,
+                    'humidity' : humidity,
+                    'temperature' : temperature
+                   }
     
     # Pass the template data into the template main.html and return it to the user
     return render_template('main.html', **templateData)
