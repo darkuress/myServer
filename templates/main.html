@@ -46,11 +46,12 @@
    <p>The {{ pins[pin].name }}
    {% if pins[pin].state == true %}
       is currently on
-      <input type="hidden" name="lampVal" id="lampVal" value="/{{pin}}/off">
+      <form action="/{{pin}}/off">
       <button id="submitButton" class="ui-button ui-button-text-only" type="submit" >Off</button>
+      </form>
    {% else %}
       is currently off
-      <input type="hidden" name="lampVal" id="lampVal" value="/{{pin}}/on">
+      <form action="/{{pin}}/on">
       <button id="submitButton" class="ui-button ui-button-text-only" type="submit" >On</button>
    {% endif %}
    </p>
